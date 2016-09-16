@@ -64,7 +64,7 @@ public class SigninActivity extends BaseActivity implements View.OnClickListener
                     etPassword.setError("Should not be empty.");
                     return;
                 }
-                showProgressDialog("Please wait");
+                showProgressDialog("Please wait...");
                 NetworkHandler.getInstance().signin(email, password).enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {

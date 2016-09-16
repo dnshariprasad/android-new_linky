@@ -97,7 +97,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
                     etConfirmPassword.setError("Passwords doesn't match.");
                     return;
                 }
-                showProgressDialog("Please wait");
+                showProgressDialog("Please wait...");
 
                 NetworkHandler.getInstance().signup(new SignUpInput(new User(firstName, lastName, email, mobile, password))).enqueue(new Callback<String>() {
                     @Override
