@@ -1,5 +1,8 @@
 package hari.new_linky.network;
 
+import java.util.List;
+
+import hari.new_linky.model.Link;
 import hari.new_linky.model.SignUpInput;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -20,5 +23,5 @@ public interface LinkyApi {
     Call<String> signup(@Body SignUpInput signUpInput);
 
     @GET("/links.json")
-    Call<String> links();
+    Call<List<Link>> links();
 }
