@@ -1,6 +1,7 @@
 package hari.new_linky.network;
 
 import hari.new_linky.Constant;
+import hari.new_linky.model.SignUpInput;
 import hari.new_linky.util.StringConverterFactory;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -30,4 +31,9 @@ public class NetworkHandler {
     public Call<String> signin(String email, String password) {
         return linkyApi.signin(email, password);
     }
+
+    public Call<String> signup(SignUpInput signUpInput) {
+        return linkyApi.signup(signUpInput);
+    }
+
 }
