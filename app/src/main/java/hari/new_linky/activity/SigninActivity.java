@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import hari.new_linky.R;
 import hari.new_linky.network.NetworkHandler;
 import retrofit2.Call;
@@ -51,7 +54,18 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                     public void onResponse(Call<String> call, Response<String> response) {
                         if (response.isSuccessful()) {
                             Log.d(TAG, "onResponse: " + response.raw());
-                            MainActivity.start(SigninActivity.this);
+                            try {
+                                JSONObject jsonObject=new JSONObject(response.body());
+                                if(jsonObject.optInt("status")==200){
+                                    MainActivity.start(SigninActivity.this);
+                                }else{
+                                    Toast.makeText(SigninActivity.this, jsonObject.optString("error"), Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
                         } else {
                             Log.e(TAG, "onResponse: " + response.raw());
                             Toast.makeText(SigninActivity.this, "Login failed.", Toast.LENGTH_SHORT).show();
