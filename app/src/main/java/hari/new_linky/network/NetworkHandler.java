@@ -36,4 +36,7 @@ public class NetworkHandler {
         return linkyApi.signup(signUpInput);
     }
 
+    public Call<String> links() {
+        return linkyApi.links();
+    }
 }
