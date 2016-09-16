@@ -1,4 +1,4 @@
-== README
+#README
 
 [Rails Code] (https://github.com/dnshariprasad/rails-new-linky)
 
