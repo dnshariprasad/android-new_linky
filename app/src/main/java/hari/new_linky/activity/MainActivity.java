@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import hari.new_linky.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
         context.startActivity(starter);

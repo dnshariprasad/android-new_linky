@@ -3,7 +3,6 @@ package hari.new_linky.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignupActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "SignupActivity";
     private EditText etFirstName, etLastName, etEmail, etMobile, etPassword, etConfirmPassword;
     private Button btnSignup;
@@ -98,9 +97,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     etConfirmPassword.setError("Passwords doesn't match.");
                     return;
                 }
+                showProgressDialog("Please wait");
+
                 NetworkHandler.getInstance().signup(new SignUpInput(new User(firstName, lastName, email, mobile, password))).enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
+                        dismissProgressDialog();
                         if (response.isSuccessful()) {
                             Log.d(TAG, "onResponse: " + response.raw());
                             try {

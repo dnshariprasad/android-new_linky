@@ -3,7 +3,6 @@ package hari.new_linky.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SigninActivity extends AppCompatActivity implements View.OnClickListener {
+public class SigninActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "MainActivity";
     private Button btnSignin;
     private EditText etEmail, etPassword;
@@ -65,9 +64,11 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                     etPassword.setError("Should not be empty.");
                     return;
                 }
+                showProgressDialog("Please wait");
                 NetworkHandler.getInstance().signin(email, password).enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
+                        dismissProgressDialog();
                         if (response.isSuccessful()) {
                             Log.d(TAG, "onResponse: " + response.raw());
                             try {
@@ -91,6 +92,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
+                        dismissProgressDialog();
                         Log.e(TAG, "onFailure: " + t.getLocalizedMessage());
                         Toast.makeText(SigninActivity.this, "Login failed.", Toast.LENGTH_SHORT).show();
                     }
