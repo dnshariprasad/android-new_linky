@@ -36,7 +36,15 @@ public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tv_title.setText(links.get(position).getTitle());
+        holder.tvTitle.setText(links.get(position).getTitle());
+        holder.tvTargetCategory.setText(links.get(position).getTargetCategory());
+        holder.tvTargetInfo.setText(links.get(position).getTargetInfo());
+        holder.tvDescription.setText(links.get(position).getDescription());
+        holder.tvTags.setText(links.get(position).getTags());
+        holder.tvCreatedAt.setText(links.get(position).getCreatedAt());
+        holder.tvUpdatedAt.setText(links.get(position).getUpdatedAt());
+        holder.tvUrl.setText(links.get(position).getUrl());
+
     }
 
     @Override
@@ -45,11 +53,19 @@ public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_title;
+        TextView  tvTitle, tvTargetCategory, tvTargetInfo, tvDescription, tvTags, tvCreatedAt, tvUpdatedAt, tvUrl;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv_title = (TextView) itemView.findViewById(R.id.tv_title);
+            tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
+            tvTargetCategory = (TextView) itemView.findViewById(R.id.tv_targetCategory);
+            tvTargetInfo = (TextView) itemView.findViewById(R.id.tv_targetInfo);
+            tvDescription = (TextView) itemView.findViewById(R.id.tv_description);
+            tvTags = (TextView) itemView.findViewById(R.id.tv_tags);
+            tvCreatedAt = (TextView) itemView.findViewById(R.id.tv_createdAt);
+            tvUpdatedAt = (TextView) itemView.findViewById(R.id.tv_updatedAt);
+            tvUrl = (TextView) itemView.findViewById(R.id.tv_url);
+
         }
     }
 }

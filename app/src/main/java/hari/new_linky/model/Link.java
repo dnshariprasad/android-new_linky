@@ -16,10 +16,10 @@ public class Link {
     private String title;
     @SerializedName("target_category")
     @Expose
-    private Object targetCategory;
+    private String targetCategory;
     @SerializedName("target_info")
     @Expose
-    private Object targetInfo;
+    private String targetInfo;
     @SerializedName("description")
     @Expose
     private String description;
@@ -67,28 +67,28 @@ public class Link {
     /**
      * @return The targetCategory
      */
-    public Object getTargetCategory() {
+    public String getTargetCategory() {
         return targetCategory;
     }
 
     /**
      * @param targetCategory The target_category
      */
-    public void setTargetCategory(Object targetCategory) {
+    public void setTargetCategory(String targetCategory) {
         this.targetCategory = targetCategory;
     }
 
     /**
      * @return The targetInfo
      */
-    public Object getTargetInfo() {
+    public String getTargetInfo() {
         return targetInfo;
     }
 
     /**
      * @param targetInfo The target_info
      */
-    public void setTargetInfo(Object targetInfo) {
+    public void setTargetInfo(String targetInfo) {
         this.targetInfo = targetInfo;
     }
 
