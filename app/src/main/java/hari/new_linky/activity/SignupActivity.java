@@ -122,6 +122,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
+                        dismissProgressDialog();
                         Log.e(TAG, "onFailure: " + t.getLocalizedMessage());
                     }
                 });
