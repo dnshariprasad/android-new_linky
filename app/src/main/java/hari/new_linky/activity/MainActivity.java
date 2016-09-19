@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.List;
 
 import hari.new_linky.R;
 import hari.new_linky.adapter.LinksAdapter;
+import hari.new_linky.model.CreateLinkInput;
 import hari.new_linky.model.Link;
 import hari.new_linky.network.NetworkHandler;
 import retrofit2.Call;
@@ -57,6 +61,25 @@ public class MainActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.create_item:
+                Intent intent= new Intent(getApplicationContext(),CreateLinkActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private void buildList(List<Link> links) {
         if (rv_links.getAdapter() == null) {

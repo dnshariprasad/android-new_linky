@@ -3,6 +3,7 @@ package hari.new_linky.network;
 import java.util.List;
 
 import hari.new_linky.Constant;
+import hari.new_linky.model.CreateLinkInput;
 import hari.new_linky.model.Link;
 import hari.new_linky.model.SignUpInput;
 import hari.new_linky.util.StringConverterFactory;
@@ -41,5 +42,9 @@ public class NetworkHandler {
 
     public Call<List<Link>> links() {
         return linkyApi.links();
+    }
+
+    public Call<String> createLink(CreateLinkInput createLinkInput){
+        return linkyApi.createLink(createLinkInput);
     }
 }
