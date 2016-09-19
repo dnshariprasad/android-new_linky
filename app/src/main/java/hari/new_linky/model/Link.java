@@ -8,6 +8,14 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Link {
 
+    public Link(String title, String targetCategory, String description, String targetInfo, String tags) {
+        this.title = title;
+        this.targetCategory = targetCategory;
+        this.description = description;
+        this.targetInfo = targetInfo;
+        this.tags = tags;
+    }
+
     @SerializedName("id")
     @Expose
     private Integer id;
